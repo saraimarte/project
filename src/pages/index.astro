@@ -1,4 +1,8 @@
 ---
+import { Image } from 'astro:assets';
+import paper from  '../../public/images/hand.png';
+import rock from  '../../public/images/rock.png';
+import sizz from  '../../public/images/sizz.png';
 
 ---
 
@@ -10,7 +14,342 @@
 		<meta name="generator" content={Astro.generator} />
 		<title>Astro</title>
 	</head>
+
 	<body>
-		<h1>Astro</h1>
-	</body>
+
+		<div class = "container">
+
+			<div class = "playerCards">
+					
+				<div class = "cardContainer">
+					<div class = "title">
+						Computer
+					</div>
+
+					<div class = "card" id = "computer">
+						<img id = "computerChoice"> </img>
+					</div>
+
+				</div>
+
+				<div class = "cardContainer">
+					
+					<div class = "title">
+						You
+					</div>
+
+					<div class = "card" id = "player">
+						<img id = "playerChoice"> </img>
+					</div>
+
+			    </div>
+		    </div>
+
+			<div class = "options">
+						
+				<div class = "title" id = "choicePlay">
+					Pick Your Play
+				</div>
+
+				<div class = "option" id = "op1">
+					<img src = '../../public/images/hand.png'> </img>
+				</div>
+	
+				<div class = "option" id = "op2" >
+					<img src = '../../public/images/rock.png'> </img>
+				</div>
+	
+				<div class = "option" id = "op3">
+					<img src = '../../public/images/sizz.png'> </img>
+				</div>
+	
+			</div>
+
+		</div>
+	
+		
+		
+		<div class = "btn" id = "playBtn">
+			Play
+		</div>
+	
+	
+		<div class = "btn" id = "restartBtn">
+			Restart
+		</div>
+
+		<!--Music by https://www.bensound.com
+License code: 6LFXZYTW2EPCIAEX -->
+
+<audio autoplay loop src="https://audio.jukehost.co.uk/B4PvN8LRMCMDwN2wj1xPcyCKRUtAHmKp">
+</audio>
+
+</body>
+	
 </html>
+
+<style>
+	@import url('https://fonts.googleapis.com/css2?family=Goudy+Bookletter+1911&family=Merienda:wght@300..900&display=swap');
+</style>
+
+<style>
+
+	:root {
+		--background-image: url('../../public/images/background.jpeg');
+		--paper-image: url('../../public/images/hand.png') ;
+		--sizz-image: url('../../public/images/sizz.png') ;
+		--rock-image: url('../../public/images/rock.png') ;
+		font-family: "Merienda", cursive;
+		font-optical-sizing: auto;
+		font-weight: <weight>;
+		font-style: normal;
+	}
+
+	*{
+		margin:0;
+		padding:0;
+		box-sizing: border-box;
+	}
+
+	body{
+        background: var(--background-image) no-repeat;
+		background-size:cover;
+		display:flex;
+		justify-content: center;
+		align-items:center;
+		flex-direction: column;
+		height:100svh;
+		gap:1em;
+	}
+
+	#restartBtn{
+		display: none;
+	}
+
+	.container{
+		width:900px;
+		display: flex;
+		gap:1em;
+	}
+
+	.playerCards{
+		width:900px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap:1em;
+		height:min-content;
+	}
+
+	.cardContainer{
+		width:50%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		gap:1em;
+	}
+
+	.card{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background-color:#f9f0dc;
+		height:300px;
+		width:100%;
+		border-radius:10px;
+	}
+
+	.card:hover{
+		position: relative;
+		top:-2px;
+	}
+
+	.title{
+		color: #907741;
+		font-weight: bold;
+		width:100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background-color: #f9f0dc;
+		padding: 1em 2em;
+		border-radius:10px;
+		text-align: center;
+	}
+
+	#choicePlay{
+		height:60px;
+	}
+
+	.btn{
+		padding:1em 2em;
+		background-color: #f9f0dc;
+		border-radius: 5px;
+		user-select: none;
+		color: #907741;
+		font-weight: bold;
+		width:900px;
+		text-align: center;
+	}
+
+	.btn:hover{
+		background-color: #f8ebcf;
+	}
+	.options{
+		display: flex;
+		flex-direction: column;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		gap:1em;
+		height:min-content;
+	}
+
+	.option{
+		user-select: none;
+	}
+
+	.option img{
+		width:50px;
+	}
+	.option:hover{
+		position: relative;
+		top:-2px;
+	}
+	
+
+</style>
+
+<style>
+@keyframes float {
+    0% {
+        transform: translate(0, 0);
+    }
+    25% {
+        transform: translate(5px, -5px);
+    }
+    50% {
+        transform: translate(10px, 0);
+    }
+    75% {
+        transform: translate(5px, 5px);
+    }
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+.card img {
+    animation: float 8s ease-in-out infinite;
+    display: block;
+    margin: 0 auto;
+}
+
+
+
+</style>
+
+
+<script>
+	const computerChoice = document.getElementById("computerChoice") as HTMLImageElement;
+	const playerChoice = document.getElementById("playerChoice") as HTMLImageElement;
+	const playBtn = document.getElementById("playBtn");
+	const options = document.querySelectorAll(".option");
+	const op1 = document.getElementById("op1");
+	const op2 = document.getElementById("op2");
+	const op3 = document.getElementById("op3");
+	const restartBtn = document.getElementById("restartBtn");
+
+	var audio;
+	var audioSrc;
+
+	let hasChosen = false; // Flag to track if player has chosen an option
+
+	function displayOption1() {
+		playerChoice.src = '../../public/images/hand.png';
+		hasChosen = true;
+	}
+
+	function displayOption2() {
+		playerChoice.src = '../../public/images/rock.png';
+		hasChosen = true;
+	}
+
+	function displayOption3() {
+		playerChoice.src = '../../public/images/sizz.png';
+		hasChosen = true;
+	}
+
+	const choices = [
+		'../../public/images/rock.png',
+		'../../public/images/hand.png',
+		'../../public/images/sizz.png'
+	];
+
+	function getRandomNumber() {
+		return Math.floor(Math.random() * 3);
+	}
+
+	let choice = null;
+	function play(){
+		if (!hasChosen) { // Check if the player has chosen an option
+			alert("Choose your play first!");
+			return;
+		}
+
+		playBtn.style.display = "none";
+		restartBtn.style.display = "block";
+
+		if(playerChoice.src.includes('rock.png')){
+			choice = 'rock';
+		} else if(playerChoice.src.includes('hand.png')){
+			choice = 'paper';
+		} else if(playerChoice.src.includes('sizz.png')){
+			choice = 'sizz';
+		}
+
+		computerChoice.src = choices[getRandomNumber()];
+	}
+
+	function playClick(){
+		if (audioSrc){
+			audio = document.createElement("audio");
+			audio.autoplay = true; // Use true instead of "True"
+			audio.src = audioSrc;
+			document.body.appendChild(audio);
+		}
+
+		audioSrc = "https://audio.jukehost.co.uk/9YkCnaMGVomwU2UY22nBjEPfxuJ4v9ml";
+	}
+
+	op1.addEventListener("click", () => {
+		displayOption1();
+		playClick();
+	});
+
+	op2.addEventListener("click", () => {
+		displayOption2();
+		playClick();
+	});
+
+	op3.addEventListener("click", () => {
+		displayOption3();
+		playClick();
+	});
+
+	playBtn.addEventListener("click", () => {
+		play();
+		playClick(); // Moved inside the play() function
+	});
+
+	restartBtn.addEventListener("click", () => {
+		restartBtn.style.display = "none";
+		playBtn.style.display = "block";
+		playerChoice.src = '';
+		computerChoice.src = '';
+		hasChosen = false; // Reset the flag when restarting
+	});
+	
+</script>
