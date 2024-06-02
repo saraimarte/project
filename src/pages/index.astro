@@ -1,4 +1,8 @@
 ---
+import { Image } from 'astro:assets';
+import paper from  '../../public/images/hand.png';
+import rock from  '../../public/images/rock.png';
+import sizz from  '../../public/images/sizz.png';
 
 ---
 
@@ -13,6 +17,11 @@
 
 	<body>
 
+		<div class = "notifContainer">
+			<p class = "notif" id = "win">You Win!</p>
+			<p class = "notif" id = "lost">You lost!</p>
+		</div>
+		
 		<div class = "container">
 
 			<div class = "playerCards">
@@ -48,15 +57,15 @@
 				</div>
 
 				<div class = "option" id = "op1">
-					<img src = '../assets/hand.png'> </img>
+					<img src = '../../public/images/hand.png'> </img>
 				</div>
 	
 				<div class = "option" id = "op2" >
-					<img src = '../assets/rock.png'> </img>
+					<img src = '../../public/images/rock.png'> </img>
 				</div>
 	
 				<div class = "option" id = "op3">
-					<img src = '../assets/sizz.png'> </img>
+					<img src = '../../public/images/sizz.png'> </img>
 				</div>
 	
 			</div>
@@ -91,10 +100,10 @@ License code: 6LFXZYTW2EPCIAEX -->
 <style>
 
 	:root {
-		--background-image: url('../assets/background.jpeg');
-		--paper-image: url('../assets/hand.png') ;
-		--sizz-image: url('../assets/sizz.png') ;
-		--rock-image: url('../assets/rock.png') ;
+		--background-image: url('../../public/images/background.jpeg');
+		--paper-image: url('../../public/images/hand.png') ;
+		--sizz-image: url('../../public/images/sizz.png') ;
+		--rock-image: url('../../public/images/rock.png') ;
 		font-family: "Merienda", cursive;
 		font-optical-sizing: auto;
 		font-weight: <weight>;
@@ -264,24 +273,24 @@ License code: 6LFXZYTW2EPCIAEX -->
 	let hasChosen = false; // Flag to track if player has chosen an option
 
 	function displayOption1() {
-		playerChoice.src = '../assets/hand.png';
+		playerChoice.src = '../../public/images/hand.png';
 		hasChosen = true;
 	}
 
 	function displayOption2() {
-		playerChoice.src = '../assets/rock.png';
+		playerChoice.src = '../../public/images/rock.png';
 		hasChosen = true;
 	}
 
 	function displayOption3() {
-		playerChoice.src = '../assets/sizz.png';
+		playerChoice.src = '../../public/images/sizz.png';
 		hasChosen = true;
 	}
 
 	const choices = [
-		'../assets/rock.png',
-		'../assets/hand.png',
-		'../assets/sizz.png'
+		'../../public/images/rock.png',
+		'../../public/images/hand.png',
+		'../../public/images/sizz.png'
 	];
 
 	function getRandomNumber() {
